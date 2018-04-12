@@ -1,5 +1,6 @@
 package com.sk.config;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,9 +11,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+/**
+ * @author santosh
+ * This class is equavalent to spring-servlet.xml
+ *
+ */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages= {"com.sk.web"})
+@ComponentScan(basePackages= {"com.sk.web","com.sk.security"})
 public class WebConfig implements WebMvcConfigurer{
 
 	@Bean
