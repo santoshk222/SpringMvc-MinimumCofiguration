@@ -22,14 +22,12 @@ public class WebConfig implements WebMvcConfigurer{
 		return viewResolver;
 	}
 	
+	//can run the page without Controller
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/home").setViewName("home");
-		
+		registry.addViewController("/home").setViewName("home");		
 	}
 	
-
 	public void configureViewResolvers(ViewResolverRegistry registry) {
-		// TODO Auto-generated method stub
 		registry.jsp("/WEB-INF/jsp/", ".jsp");
 	}
 	
