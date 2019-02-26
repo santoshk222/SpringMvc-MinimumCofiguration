@@ -1,5 +1,6 @@
 package com.sk.web;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,30 +10,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 
 public class HomeController {
-	
-	@RequestMapping(value="/",method=RequestMethod.GET)
+
+	public static final Logger logger = Logger.getLogger(HomeController.class);
+	public static final String log = HomeController.class + "-";
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		System.out.println("/ requested");
+		logger.debug(log + "/");
 		return "sk";
 	}
-	
-	@RequestMapping(value="/homePage",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/homePage", method = RequestMethod.GET)
 	public String homepage() {
-		System.out.println("home requested");
+		logger.debug(log + "/homePage");
 		return "homePage";
 	}
-	
-	@RequestMapping(value="/loginPage",method=RequestMethod.GET)
-	public String loginpage(@RequestParam(value="error",required=false) String error,@RequestParam(value="logout",required=false) String logout,Model model) {
-		System.out.println("/loginPage requested");
-		if(error !=null) {
+
+	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
+	public String loginpage(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, Model model) {
+		logger.debug(log + "/loginPage");
+		if (error != null) {
 			model.addAttribute("error", "Invalid credintials provided");
+			logger.debug(log + "Error Invalid credintials");
 		}
-		if (logout !=null) {
+		if (logout != null) {
 			model.addAttribute("logout", "Logged out successfully..");
+			logger.debug(log + "Logged out");
 		}
 		return "loginPage";
 	}
-	
 
 }

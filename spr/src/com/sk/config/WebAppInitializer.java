@@ -1,27 +1,28 @@
 package com.sk.config;
 
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+	final Logger logger = Logger.getLogger(getClass());
+	String log = WebAppInitializer.class + " ";
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return new Class[] {WebConfig.class};
+		logger.debug(log + "getRootConfigClasses() ");
+		return new Class[] { WebConfig.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// TODO Auto-generated method stub
+		logger.debug(log + "getServletConfigClasses()");
 		return null;
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		// TODO Auto-generated method stub
-		return new String[] {"/"};
+		logger.debug(log + "returned '/'");
+		return new String[] { "/" };
 	}
-	
-	
 
 }
